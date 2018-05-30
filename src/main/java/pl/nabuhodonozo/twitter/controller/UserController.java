@@ -24,11 +24,17 @@ public class UserController {
 	UserRepository userRepository;
 	@PostMapping("/addUser")
 	public String addToDB(@Valid User user, BindingResult result) {
-		if(result.hasErrors())
-		{
+		if(result.hasErrors()){
 			return "addUserForm";
 		}
-		userRepository.save(user);
+		if(userRepository.findByUsername(user.getUsername()) != null){
+			result.rejectValue("username", "error.userAlreadyExist", "This username is already used");
+			return "addUserForm";
+		}else if(userRepository.findByEmail(user.getEmail()) != null){
+			result.rejectValue("email", "error.emailAlreadyExist", "This email is already used");
+			return "addUserForm";
+		}
+		userRepository.save(user);	
 		return "homePage";
 	}
 }
