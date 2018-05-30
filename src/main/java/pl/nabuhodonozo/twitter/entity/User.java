@@ -1,12 +1,16 @@
 package pl.nabuhodonozo.twitter.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -22,7 +26,7 @@ public class User {
 	@NotBlank
 	@Column(unique = true)
 	@Length(min=4, max=12)
-	private String username;
+	private String login;
 	@NotBlank
 	@Length(min=8, max=20)
 	private String password;
@@ -30,6 +34,14 @@ public class User {
 	@NotBlank
 	@Column(unique = true)
 	private String email;
+	@NotBlank
+	@Length(min=4, max=60)
+	private String username;
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	private List<Tweet> tweets;
+	//name
+	//lastname     //those to add and enable editing //crud
+	//year of birth
 	private boolean enabled = true;
 
 	
@@ -77,6 +89,27 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public List<Tweet> getTweets() {
+		return tweets;
+	}
+
+	public void setTweets(List<Tweet> tweets) {
+		this.tweets = tweets;
+	}
+//	
+	// rozkminic crud dla tweetow
+//	public void addTweet(Tweet tweet) {
+//		Tweets.add(tweet);
+//	}
 
 	@Override
 	public String toString() {

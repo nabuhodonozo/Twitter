@@ -27,8 +27,8 @@ public class UserController {
 		if(result.hasErrors()){
 			return "addUserForm";
 		}
-		if(userRepository.findByUsername(user.getUsername()) != null){
-			result.rejectValue("username", "error.userAlreadyExist", "This username is already used");
+		if(userRepository.findByLogin(user.getLogin()) != null){
+			result.rejectValue("login", "error.userAlreadyExist", "This login is already used");
 			return "addUserForm";
 		}else if(userRepository.findByEmail(user.getEmail()) != null){
 			result.rejectValue("email", "error.emailAlreadyExist", "This email is already used");

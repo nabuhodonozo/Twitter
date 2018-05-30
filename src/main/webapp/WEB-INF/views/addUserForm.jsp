@@ -15,13 +15,14 @@
 </head>
 <body>
 	<form:form method="post" modelAttribute="user">
-		<div><label> <form:input path="username"/> username</label>          </div>
-		<div><form:errors path="username"/></div>
+		<div><label> <form:input path="login"/> login</label>          </div>
+		<div><form:errors path="login"/></div>
 		<div><label> <form:password path="password"/> password</label>          </div>
-<!--  	<div><label> <form:password path="password"/> password</label>          </div> -->
 		<div><form:errors path="password"/></div>
 		<div><label> <form:input type="email" path="email"/>  email  </label>          </div>
 		<div><form:errors path="email"/></div>
+		<div><label> <form:input path="username"/> username</label>         </div>
+		<div><form:errors path="username"/></div>
 		<div><label> <input type="submit"/>        </label>          </div>
 	</form:form>
 </body>
