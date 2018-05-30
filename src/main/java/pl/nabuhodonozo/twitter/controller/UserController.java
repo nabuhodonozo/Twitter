@@ -1,12 +1,13 @@
 package pl.nabuhodonozo.twitter.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import pl.nabuhodonozo.twitter.entity.User;
 import pl.nabuhodonozo.twitter.repository.UserRepository;
@@ -22,9 +23,12 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 	@PostMapping("/addUser")
-	@ResponseBody
-	public String addToDB(@ModelAttribute User user) {
+	public String addToDB(@Valid User user, BindingResult result) {
+		if(result.hasErrors())
+		{
+			return "addUserForm";
+		}
 		userRepository.save(user);
-		return "Dodano";
+		return "homePage";
 	}
 }

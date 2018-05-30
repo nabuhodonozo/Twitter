@@ -22,6 +22,7 @@ public class User {
 	@NotBlank
 	private String password;
 	@Email
+	@NotBlank
 	private String email;
 	private boolean enabled = true;
 	
@@ -61,5 +62,12 @@ public class User {
 	}
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return String.format("User [id=%s, username=%s, password=%s, email=%s, enabled=%s]", id, username, password,
+				email, enabled);
 	}
 }

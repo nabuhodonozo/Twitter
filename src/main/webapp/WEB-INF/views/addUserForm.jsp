@@ -6,12 +6,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add user</title>
+<style>
+	span{
+		color: red;
+	}
+
+</style>
 </head>
 <body>
 	<form:form method="post" modelAttribute="user">
 		<div><label> <form:input path="username"/> username</label>          </div>
-		<div><label> <form:input path="password"/> password</label>          </div>
-		<div><label> <form:input path="email"/>  email  </label>          </div>
+		<div><form:errors path="username"/></div>
+		<div><label> <form:password path="password"/> password</label>          </div>
+		<div><form:errors path="password"/></div>
+		<div><label> <form:input type="email" path="email"/>  email  </label>          </div>
+		<div><form:errors path="email"/></div>
 		<div><label> <input type="submit"/>        </label>          </div>
 	</form:form>
 </body>
