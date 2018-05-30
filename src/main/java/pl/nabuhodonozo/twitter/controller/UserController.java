@@ -34,6 +34,7 @@ public class UserController {
 			result.rejectValue("email", "error.emailAlreadyExist", "This email is already used");
 			return "addUserForm";
 		}
+		user.hashPassword();
 		userRepository.save(user);	
 		return "homePage";
 	}
