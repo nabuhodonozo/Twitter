@@ -22,7 +22,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	@NotBlank
 	@Column(unique = true)
 	@Length(min=4, max=12)
@@ -53,11 +53,11 @@ public class User {
 		this.password = BCrypt.hashpw(this.password, BCrypt.gensalt(5));
 	}
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

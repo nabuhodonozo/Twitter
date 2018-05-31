@@ -1,5 +1,7 @@
 package pl.nabuhodonozo.twitter.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import pl.nabuhodonozo.twitter.entity.User;
 import pl.nabuhodonozo.twitter.repository.UserRepository;
 
 
@@ -18,17 +21,29 @@ public class HomeController {
 		return "login";
 	}
 	
+	
+	//spring boot
+	//spring data redis/jpa
+	//spirng session
 	@Autowired
 	UserRepository userRepository;
 	@PostMapping("/")
 	@ResponseBody //test line
-	public String login(@RequestParam String login, @RequestParam String password) {
-		if(userRepository.findByLogin(login) == null){
+	public String login(@RequestParam String login, @RequestParam String password, HttpSession session) {
+		User user = userRepository.findByLogin(login);
+		if(user == null){
 			return "Login doesnt exist";
-		} else if(BCrypt.checkpw(password, userRepository.findByLogin(login).getPassword())) {
+		} else if(BCrypt.checkpw(password, user.getPassword())) {
+			session.setAttribute("user_id", user.getId());
 			return "Brawo zagogolowales sie";
 		}else {
 			return "Bledne haslo";
 		}
+	}
+	
+	@GetMapping("/test")
+	@ResponseBody
+	public String session(HttpSession session) {
+		return session.getAttribute("user_id").toString();
 	}
 }

@@ -23,7 +23,7 @@
 		<div><form:errors path="email"/></div>
 		<div><label> <form:input path="username"/> username</label>         </div>
 		<div><form:errors path="username"/></div>
-		<div><label> <input type="submit"/>        </label>          </div>
+		<div><label> <input type="submit" value="register"/>        </label>          </div>
 	</form:form>
 </body>
 </html>
