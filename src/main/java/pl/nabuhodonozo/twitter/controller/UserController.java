@@ -47,6 +47,8 @@ public class UserController {
 		return "account";
 	}
 	
+	//dunno if it's proper way of deleting things by url... mby js or smthing
+	//but it's workin just dunt wanna give users opportunity to manualy go here by url, without account
 	@GetMapping("/delete")
 	@ResponseBody
 	public String delete(HttpSession session) {

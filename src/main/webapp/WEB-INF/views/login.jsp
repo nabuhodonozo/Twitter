@@ -11,6 +11,7 @@
 		<div><label><input type="text" name="login"/>    login       </label></div>
 		<div><label><input type="password" name="password"/>   password </label></div>
 		<div><label><input type="submit" value="Login"/>                      </label></div>
+		add here register option or maby do header and inject it with links...
 	</form>
 </body>
 </html>

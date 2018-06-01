@@ -40,10 +40,4 @@ public class HomeController {
 			return "Bledne haslo";
 		}
 	}
-	
-	@GetMapping("/test")
-	@ResponseBody
-	public String session(HttpSession session) {
-		return session.getAttribute("user_id").toString();
-	}
 }

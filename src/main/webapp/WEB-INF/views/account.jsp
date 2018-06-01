@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	Make here edit/delete account options
 </body>
 </html>
