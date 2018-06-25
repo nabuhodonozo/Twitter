@@ -21,12 +21,10 @@ public class HomeController {
 		return "login";
 	}
 	
-	
-	//spring boot
-	//spring data redis/jpa
-	//spirng session
+
 	@Autowired
 	UserRepository userRepository;
+
 	@PostMapping("/")
 	@ResponseBody //test line
 	public String login(@RequestParam String login, @RequestParam String password, HttpSession session) {

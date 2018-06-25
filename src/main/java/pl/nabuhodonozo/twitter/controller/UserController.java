@@ -46,9 +46,7 @@ public class UserController {
 	public String account() {
 		return "account";
 	}
-	
-	//dunno if it's proper way of deleting things by url... mby js or smthing
-	//but it's workin just dunt wanna give users opportunity to manualy go here by url, without account
+
 	@GetMapping("/delete")
 	@ResponseBody
 	public String delete(HttpSession session) {
@@ -56,40 +54,5 @@ public class UserController {
 		User entity = userRepository.findOne(id);
 		userRepository.delete(entity);
 		return "usuniteto" + entity.toString();
-	}
-	
-	
-	@GetMapping("/initialize")
-	@ResponseBody
-	public String initialize() {
-		User user1 = new User();
-		user1.setLogin("Maniek");
-		user1.setPassword("Maniek123");
-		user1.setEmail("q@q.q");
-		user1.setUsername("Manius");
-		user1.hashPassword();
-		
-		userRepository.save(user1);
-		User user2 = new User();
-		user2.setLogin("Jasiu");
-		user2.setPassword("Jasiu123");
-		user2.setEmail("e@e.e");
-		user2.setUsername("Jasio");
-		user2.hashPassword();
-		
-		userRepository.save(user2);
-		User user3 = new User();
-		user3.setLogin("Michal");
-		user3.setPassword("Michal123");
-		user3.setEmail("w@w.w");
-		user3.setUsername("Michalek");
-		user3.hashPassword();
-		
-		userRepository.save(user3);
-		
-		
-		
-		
-		return "Dodano";
 	}
 }

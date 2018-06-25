@@ -23,7 +23,9 @@ public class Tweet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
 	private String message;
+
 	public long getId() {
 		return id;
 	}

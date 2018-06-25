@@ -23,25 +23,28 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
 	@NotBlank
 	@Column(unique = true)
 	@Length(min=4, max=12)
 	private String login;
+
 	@NotBlank
 	@Length(min=8, max=20)
 	private String password;
+
 	@Email
 	@NotBlank
 	@Column(unique = true)
 	private String email;
+
 	@NotBlank
 	@Length(min=4, max=60)
 	private String username;
+
 	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private List<Tweet> tweets;
-	//name
-	//lastname     //those to add and enable editing //crud
-	//year of birth
+
 	private boolean enabled = true;
 
 	
@@ -105,11 +108,7 @@ public class User {
 	public void setTweets(List<Tweet> tweets) {
 		this.tweets = tweets;
 	}
-//	
-	// rozkminic crud dla tweetow
-//	public void addTweet(Tweet tweet) {
-//		Tweets.add(tweet);
-//	}
+
 
 	@Override
 	public String toString() {
