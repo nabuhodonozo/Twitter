@@ -12,8 +12,8 @@ Functionalities:
 Technologies used:
 * [Java8]()
 * [Spring Framework](https://spring.io/projects/spring-framework)
-        * [Spring MVC]()
-        * [Spring JPA]()
+ * [Spring MVC]()
+ * [Spring JPA]()
 * [Hibernate]()
 * [MySQL]()
 * [Maven](https://maven.apache.org/)
